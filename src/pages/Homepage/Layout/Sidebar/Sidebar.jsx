@@ -19,7 +19,7 @@ const Sidebar = ({ open, responsiveOpen }) => {
 
     return (
         <div
-            className={`${open ? "w-[300px]" : "w-[65px] "
+            className={`${open ? "w-[250px]" : "w-[65px] "
                 } ${responsiveOpen ? "left-0" : "left-[-300px]"
                 } h-screen fixed z-50 lg:left-0 lg:relative bg-psclightskyblue duration-500 py-10`}
         >
@@ -31,7 +31,7 @@ const Sidebar = ({ open, responsiveOpen }) => {
                     alt=""
                 />
             </div>
-            <ul className="pt-6 flex flex-col justify-start items-start gap-5">
+            <ul className="pt-6 flex flex-col justify-start items-start">
                 {Menus.map((item, index) => (
                     <li
                         key={index}
@@ -40,7 +40,7 @@ const Sidebar = ({ open, responsiveOpen }) => {
                             } `}
                     >
                         <img src={`${item.src}`} alt="" className="w-[25px]" />
-                        <span className={`${!open && "hidden"} origin-left duration-200 text-xl font-semibold`}>
+                        <span className={`${!open && "hidden"} origin-left duration-200 text-sm font-semibold`}>
                             {item.title}
                         </span>
                     </li>
