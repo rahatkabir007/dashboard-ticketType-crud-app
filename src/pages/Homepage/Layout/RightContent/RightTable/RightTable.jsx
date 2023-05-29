@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Pagination from "../../../../../components/Pagination/Pagination";
-const RightTable = () => {
+import EditTicketForm from "./EditTicketForm";
+import DeleteTicketForm from "./DeleteTicketForm";
+const RightTable = ({ handleModalOpen }) => {
 
     const tableHeaders = [
         "Ticket Type",
@@ -83,7 +85,9 @@ const RightTable = () => {
                                                     </p>
                                                 </td>
                                                 <td className="px-2 py-3  text-sm">
-                                                    <button>
+                                                    <button
+                                                        onClick={() => handleModalOpen(<EditTicketForm />)}
+                                                    >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             <span
                                                                 style={{ boxShadow: "0 2px 6px #acb5f6" }}
@@ -94,13 +98,12 @@ const RightTable = () => {
                                                             </span>
                                                         </span>
                                                     </button>
-                                                    <button>
+                                                    <button
+                                                        onClick={() => handleModalOpen(<DeleteTicketForm />)}
+                                                    >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             {tabledata && (
                                                                 <span
-                                                                    // onClick={() =>
-                                                                    //     setDeleteModalSlug(tabledata.slug)
-                                                                    // }
                                                                     style={{ boxShadow: "0 2px 6px #fd9b96" }}
                                                                     className="h-8 w-8  inset-0 bg-red-500   rounded  relative text-white flex justify-center items-center"
                                                                 >

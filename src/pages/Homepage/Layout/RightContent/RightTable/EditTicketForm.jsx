@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddTicketModal = () => {
+const EditTicketForm = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const AddTicketModal = () => {
     );
 };
 
-export default AddTicketModal;
+export default EditTicketForm;
