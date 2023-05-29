@@ -35,7 +35,7 @@ const Pagination = ({ pageCount, currentPage }) => {
           <div className="flex flex-row ">
             <div className="flex flex-row gap-x-[7px] md:gap-x-[50px]">
               <div
-                className={`cursor-pointer ${currentPage === 1 && "hidden"} rounded-[3px] text-white bg-psclightblack p-[5px]`}
+                className={`cursor-pointer ${currentPage === 1 && "hidden"} rounded text-white bg-pscdarkblue p-[5px]`}
                 onClick={() => {
                   setClicked(0)
                   handlePageClick(currentPage - 1)
@@ -44,7 +44,7 @@ const Pagination = ({ pageCount, currentPage }) => {
               <div>
                 {currentPage > 2 &&
                   <div className="flex">
-                    <p onClick={() => { setLPClicked(true); handlePageClick(1) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclick && ' font-bold'}`}>
+                    <p onClick={() => { setLPClicked(true); handlePageClick(1) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded ${lPclick && ' font-bold'}`}>
                       1
                     </p>
                     <p className="text-black">&nbsp;&nbsp;......&nbsp;&nbsp;</p>
@@ -71,8 +71,8 @@ const Pagination = ({ pageCount, currentPage }) => {
                       >
                         <p
                           className={`w-[32px] flex border-[1px]  border-[#C0C0C0] justify-center items-center h-[32px] ${currentPage === data + 1 ?
-                            "text-white rounded-[3px] bg-psclightblack font-bold"
-                            : 'hover:bg-[#C0C0C0] text-psclightblack'} ${clicked === ind &&
+                            "text-white rounded bg-pscdarkblue font-bold"
+                            : 'hover:bg-[#C0C0C0] text-pscdarkblue rounded'} ${clicked === ind &&
                             "text-[#525455] font-bold"
                             }`
                           }
@@ -87,14 +87,14 @@ const Pagination = ({ pageCount, currentPage }) => {
             {currentPage !== pageCount && pageCount > 2 &&
               <div className="flex">
                 <p className="text-black">&nbsp;&nbsp;......&nbsp;&nbsp;</p>
-                <p onClick={() => { setLPClickedL(true); handlePageClick(pageCount) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded-[3px] ${lPclickL && 'font-bold'}`}>
+                <p onClick={() => { setLPClickedL(true); handlePageClick(pageCount) }} className={`w-[32px] text-black cursor-pointer border-[1px] border-[#C0C0C0] flex justify-center items-center h-[32px] hover:bg-[#C0C0C0] rounded ${lPclickL && 'font-bold'}`}>
                   {pageCount}
                 </p>
               </div>}
           </div>
           <div className="flex flex-wrap gap-x-[5px] gap-y-[5px] text-white h-[32px]">
             <div
-              className={`cursor-pointer ${currentPage === pageCount && "invisible"} rounded-[3px] bg-psclightblack p-[5px]`}
+              className={`cursor-pointer ${currentPage === pageCount && "invisible"} rounded bg-pscdarkblue p-[5px]`}
               onClick={() => {
                 if (currentPage === 1) {
                   setClicked(1)
