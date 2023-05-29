@@ -2,7 +2,8 @@ import React from 'react';
 import { images } from "../../../../components/Constants";
 
 
-const Sidebar = ({ open, setOpen }) => {
+const Sidebar = ({ open, responsiveOpen }) => {
+
 
     const Menus = [
 
@@ -18,14 +19,14 @@ const Sidebar = ({ open, setOpen }) => {
 
     return (
         <div
-            className={` ${open ? "w-72" : "w-20 "
-                } bg-psclightskyblue h-screen pb-5 pt-8 relative duration-300`}
+            className={`${open ? "w-[300px]" : "w-[65px] "
+                } ${responsiveOpen ? "left-0" : "left-[-300px]"
+                } h-screen fixed z-50 lg:left-0 lg:relative bg-psclightskyblue duration-500 py-10`}
         >
-            <img src={images.arrowControl} className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purpleborder-2 rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} alt="" />
             <div className="flex gap-x-4 items-center">
                 <img
                     src={images.logo}
-                    className={`w-[50px] mx-auto cursor-pointer duration-500  ${open && "rotate-[360deg] w-[80%] px-6"
+                    className={`w-[50px] mx-auto cursor-pointer duration-500  ${open && "rotate-[360deg] w-[80%] px-10"
                         }`}
                     alt=""
                 />
