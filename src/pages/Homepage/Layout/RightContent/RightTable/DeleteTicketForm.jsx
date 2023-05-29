@@ -1,6 +1,17 @@
 import React from 'react';
+import { ToastMessage } from "../../../../../utils/ToastMessage";
+import { useDispatch } from 'react-redux';
+import { deleteTicketType } from '../../../../../features/TicketReducer';
+const DeleteTicketForm = ({ handleClose, id }) => {
 
-const DeleteTicketForm = ({ handleClose }) => {
+    const dispatch = useDispatch();
+
+    const handleDelete = () => {
+        dispatch(deleteTicketType(id));
+        handleClose();
+        ToastMessage.notifySuccess("Post Deleted Successfully")
+    }
+
     return (
         <div>
             <div className="flex flex-col gap-y-10 items-center justify-center">
@@ -14,7 +25,7 @@ const DeleteTicketForm = ({ handleClose }) => {
                         Cancel
                     </div>
                     <div
-                        // onClick={() => { dispatch(deletePostAction(showRemove)) }}
+                        onClick={handleDelete}
                         className='px-3 py-2 bg-[#A13333] text-white rounded cursor-pointer'>
                         Delete
                     </div>

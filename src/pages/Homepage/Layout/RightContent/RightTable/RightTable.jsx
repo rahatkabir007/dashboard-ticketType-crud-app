@@ -3,54 +3,22 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Pagination from "../../../../../components/Pagination/Pagination";
 import DeleteTicketForm from "./DeleteTicketForm";
 import TicketForm from '../../../../../components/TicketForm/TicketForm';
+import { useSelector } from 'react-redux';
+
 const RightTable = ({ handleModalOpen, handleClose }) => {
+    const { ticketTypes } = useSelector(state => ({ ...state.ticketType }))
 
     const tableHeaders = [
+        "",
         "Ticket Type",
         "Description",
         "Actions"
     ]
-    const tableDatas = [
-        {
-            id: 1,
-            Customer: "Rafin Robin",
-            OrderId: "8966896",
-            Date: "32 December, 2023",
-            Quantity: 2320,
-            Amount: 20343,
-            OrderStatus: "pending",
-            Payment: "success",
-            Action: "",
-        },
-        {
-            id: 2,
-            Customer: "Mr. Sadab",
-            OrderId: "8966896",
-            Date: "32 January, 2023",
-            Quantity: 540,
-            Amount: 65456,
-            OrderStatus: "delivered",
-            Payment: "success",
-            Action: "",
-        },
-        {
-            id: 3,
-            Customer: "Toukir khan",
-            OrderId: "4547544",
-            Date: "15 February, 2023",
-            Quantity: 1220,
-            Amount: 62324,
-            OrderStatus: "pending",
-            Payment: "pending",
-            Action: "",
-        },
 
-
-    ];
     return (
         <div className="py-5 rounded w-full">
             {
-                tableDatas.length === 0 ? <>
+                ticketTypes?.length === 0 ? <>
                     <div className='flex justify-center items-center'>
                         <span className="text-xl font-medium">No Ticket Type Available</span>
                     </div>
@@ -74,19 +42,22 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                     </thead>
                                     {/* -----------Plz Attention ,Table body/Row start here -------------- */}
                                     <tbody>
-                                        {tableDatas.map((tabledata, index) => (
+                                        {ticketTypes?.map((tabledata, index) => (
                                             <tr key={index} className="even:bg-gray-50 odd:bg-white text-center">
                                                 <td className="px-3 py-5 text-sm">
                                                     <p className="text-gray-900 ">{index + 1}</p>
                                                 </td>
+                                                <td className="px-3 py-5 text-sm">
+                                                    <p className="text-gray-900 ">{tabledata?.ticketType}</p>
+                                                </td>
                                                 <td className="px-3 py-3  text-sm capitalize">
                                                     <p className="text-gray-900 ">
-                                                        {tabledata?.Customer}
+                                                        {tabledata?.description}
                                                     </p>
                                                 </td>
                                                 <td className="px-2 py-3  text-sm">
                                                     <button
-                                                        onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" />)}
+                                                        onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" handleClose={handleClose} tableData={tabledata} />)}
                                                     >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             <span
@@ -99,7 +70,7 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                                         </span>
                                                     </button>
                                                     <button
-                                                        onClick={() => handleModalOpen(<DeleteTicketForm handleClose={handleClose} />)}
+                                                        onClick={() => handleModalOpen(<DeleteTicketForm handleClose={handleClose} id={tabledata?.id} />)}
                                                     >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             {tabledata && (

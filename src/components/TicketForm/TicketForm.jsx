@@ -1,41 +1,42 @@
 import React, { useState } from 'react';
+import { addTicketType, editTicketType } from '../../features/TicketReducer';
+import { useDispatch } from 'react-redux';
+import { ToastMessage } from "../../utils/ToastMessage";
 
-const TicketForm = ({ submitbtn, handleClose }) => {
-    const [ticketType, setTicketType] = useState("");
-    const [description, setDescription] = useState("");
+const TicketForm = ({ submitbtn, handleClose, tableData }) => {
+    const [values, setValues] = useState({
+        ticketType: '',
+        description: ''
+    });
 
-    // const { createPostFormStatus } = useAppSelector((state: RootState) => state.post)
-    // const dispatch = useAppDispatch()
+    const dispatch = useDispatch();
 
     const handleAdd = (e, submitbtn) => {
+
         const data = {
             id: Math.floor(Math.random() * 1000),
-            // userId: Math.floor(Math.random() * 1000),
-            ticketType: ticketType,
-            description: description
+            ticketType: values.ticketType,
+            description: values.description
 
         }
         if (submitbtn === "Add Ticket") {
-
-            handleClose()
-            console.log("addd data", submitbtn, data);
+            dispatch(addTicketType(data));
+            ToastMessage.notifySuccess("Post Added Successfully")
         }
+        // if (submitbtn === "Edit Ticket") {
         else {
-
-            handleClose()
-            console.log("edit data", submitbtn, data);
+            dispatch(editTicketType({
+                id: tableData?.id,
+                ticketType: values.ticketType,
+                description: values.description
+            }));
+            ToastMessage.notifySuccess("Post Edited Successfully")
         }
-        // dispatch(createPostAction(data))
-        // ToastMessage.notifySuccess("Post Added")
-        e.preventDefault()
+        // }
+        handleClose();
+        e.preventDefault();
     }
 
-    // useEffect(() => {
-    //     if (createPostFormStatus === ApiStatus.success) {
-    //         setTitle("");
-    //         setBody("");
-    //     }
-    // }, [createPostFormStatus])
     return (
         <div className='w-full'>
             <div className="py-8">
@@ -49,10 +50,8 @@ const TicketForm = ({ submitbtn, handleClose }) => {
                             id="ticketType"
                             type="text"
                             placeholder="Ticket Type"
-                            value={ticketType}
-                            onChange={(e) => {
-                                setTicketType(e.target.value)
-                            }}
+                            value={values.ticketType}
+                            onChange={(e) => setValues({ ...values, ticketType: e.target.value })}
                             required
                         />
                     </div>
@@ -66,10 +65,8 @@ const TicketForm = ({ submitbtn, handleClose }) => {
                             className="appearance-none bg-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-gray-700"
                             id="description"
                             placeholder="Description"
-                            value={description}
-                            onChange={(e) => {
-                                setDescription(e.target.value)
-                            }}
+                            value={values.description}
+                            onChange={(e) => setValues({ ...values, description: e.target.value })}
                             required
                         />
                     </div>
