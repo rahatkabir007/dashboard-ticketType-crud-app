@@ -59,7 +59,7 @@ const Pagination = ({ pageCount, currentPage }) => {
                 .map((data, ind) => {
                   return (
                     <>
-                      {console.log('ind', currentPage, ind)}
+                      {/* {console.log('ind', currentPage, ind)} */}
                       <div
                         onClick={() => {
                           if (currentPage !== (data + 1)) {

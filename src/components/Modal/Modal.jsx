@@ -27,7 +27,7 @@ const Modal = ({ isOpen, handleClose, content }) => {
                         onClick={closeModal}
                     ></div>
                     <div
-                        className={`flex flex-col gap-y-8 bg-white rounded-lg max-w-lg p-6 transform transition-all duration-300 ${modalVisible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
+                        className={`flex flex-col gap-y-8 bg-white rounded-lg w-1/3 p-6 transform transition-all duration-300 ${modalVisible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
                             }`}
                     >
                         <div className="py-2 flex justify-end mr-5">

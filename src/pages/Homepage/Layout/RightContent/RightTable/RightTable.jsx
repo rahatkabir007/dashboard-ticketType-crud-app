@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Pagination from "../../../../../components/Pagination/Pagination";
-import EditTicketForm from "./EditTicketForm";
 import DeleteTicketForm from "./DeleteTicketForm";
+import TicketForm from '../../../../../components/TicketForm/TicketForm';
 const RightTable = ({ handleModalOpen }) => {
 
     const tableHeaders = [
@@ -86,7 +86,7 @@ const RightTable = ({ handleModalOpen }) => {
                                                 </td>
                                                 <td className="px-2 py-3  text-sm">
                                                     <button
-                                                        onClick={() => handleModalOpen(<EditTicketForm />)}
+                                                        onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" />)}
                                                     >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             <span
