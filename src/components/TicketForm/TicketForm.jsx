@@ -50,7 +50,7 @@ const TicketForm = ({ submitbtn, handleClose, tableData }) => {
                             id="ticketType"
                             type="text"
                             placeholder="Ticket Type"
-                            value={values.ticketType}
+                            defaultValue={tableData ? tableData.ticketType : values.ticketType}
                             onChange={(e) => setValues({ ...values, ticketType: e.target.value })}
                             required
                         />
@@ -65,7 +65,7 @@ const TicketForm = ({ submitbtn, handleClose, tableData }) => {
                             className="appearance-none bg-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-gray-700"
                             id="description"
                             placeholder="Description"
-                            value={values.description}
+                            defaultValue={tableData ? tableData.description : values.description}
                             onChange={(e) => setValues({ ...values, description: e.target.value })}
                             required
                         />
