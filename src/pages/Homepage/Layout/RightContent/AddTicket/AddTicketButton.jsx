@@ -2,14 +2,14 @@ import React from 'react';
 import TicketForm from '../../../../../components/TicketForm/TicketForm';
 
 
-const AddTicketButton = ({ handleModalOpen }) => {
+const AddTicketButton = ({ handleModalOpen, handleClose }) => {
 
     return (
         <>
             <div className='my-5'>
                 <div className='flex justify-end'>
                     <button
-                        onClick={() => handleModalOpen(<TicketForm submitbtn="Add Ticket" />)}
+                        onClick={() => handleModalOpen(<TicketForm submitbtn="Add Ticket" handleClose={handleClose} />)}
                         className='outline-none border-none px-6 py-3 bg-pscdarkblue text-white rounded'>Add Ticket</button>
 
                 </div>

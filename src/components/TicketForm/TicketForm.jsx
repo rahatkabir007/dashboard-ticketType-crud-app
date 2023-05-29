@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TicketForm = ({ submitbtn }) => {
+const TicketForm = ({ submitbtn, handleClose }) => {
     const [ticketType, setTicketType] = useState("");
     const [description, setDescription] = useState("");
 
@@ -17,9 +17,12 @@ const TicketForm = ({ submitbtn }) => {
         }
         if (submitbtn === "Add Ticket") {
 
+            handleClose()
             console.log("addd data", submitbtn, data);
         }
         else {
+
+            handleClose()
             console.log("edit data", submitbtn, data);
         }
         // dispatch(createPostAction(data))

@@ -24,8 +24,8 @@ const RightContent = ({ setOpen, open, setResponsiveOpen, responsiveOpen }) => {
             <div className='flex flex-col'>
                 <RightNav open={open} setOpen={setOpen} responsiveOpen={responsiveOpen} setResponsiveOpen={setResponsiveOpen} />
                 <div className='my-[25px] mx-[45px]'>
-                    <AddTicketButton handleModalOpen={handleModalOpen} />
-                    <RightTable handleModalOpen={handleModalOpen} />
+                    <AddTicketButton handleModalOpen={handleModalOpen} handleClose={handleModalClose} />
+                    <RightTable handleModalOpen={handleModalOpen} handleClose={handleModalClose} />
                 </div>
             </div>
         </>
