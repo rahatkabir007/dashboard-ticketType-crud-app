@@ -9,7 +9,7 @@ const Layout = () => {
     return (
         <div className="flex">
             <Sidebar open={open} setOpen={setOpen} />
-            <div className="h-screen flex-1 p-7">
+            <div className="h-screen flex-1">
                 <RightContent />
             </div>
         </div>

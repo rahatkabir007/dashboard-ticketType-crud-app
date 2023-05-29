@@ -25,7 +25,7 @@ const Sidebar = ({ open, setOpen }) => {
             <div className="flex gap-x-4 items-center">
                 <img
                     src={images.logo}
-                    className={`w-[50px] mx-auto cursor-pointer duration-500 ${open && "rotate-[360deg] w-[80%] px-6"
+                    className={`w-[50px] mx-auto cursor-pointer duration-500  ${open && "rotate-[360deg] w-[80%] px-6"
                         }`}
                     alt=""
                 />

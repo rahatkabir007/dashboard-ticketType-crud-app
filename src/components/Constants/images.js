@@ -7,6 +7,7 @@ import users from "../../assets/users.png";
 import assets from "../../assets/assets.png";
 import ticketstype from "../../assets/ticketstype.png";
 import ticketsqueue from "../../assets/ticketsqueue.png";
+import user from "../../assets/User.png";
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { arrowControl, logo, dashboard, mytickets, myprofile, users, assets, ticketstype, ticketsqueue };
+export default { arrowControl, logo, dashboard, mytickets, myprofile, users, assets, ticketstype, ticketsqueue, user };

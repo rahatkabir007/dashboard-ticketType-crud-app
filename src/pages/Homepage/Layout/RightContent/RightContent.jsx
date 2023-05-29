@@ -1,9 +1,11 @@
 import React from 'react';
+import { images } from '../../../../components/Constants';
+import RightNav from './RightNav/RightNav';
 
 const RightContent = () => {
     return (
-        <div>
-            <h1 className="text-2xl font-semibold ">Home Page</h1>
+        <div className='flex flex-col'>
+            <RightNav />
         </div>
     );
 };
