@@ -22,13 +22,13 @@ const Modal = ({ isOpen, handleClose, content }) => {
     return (
         <>
             {isOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-[99]">
+                <div className="fixed inset-0 flex items-center justify-center z-[99] px-5 lg:px-0">
                     <div
                         className="fixed inset-0 bg-black opacity-50 transition-opacity"
                         onClick={closeModal}
                     ></div>
                     <div
-                        className={`flex flex-col gap-y-8 bg-white rounded-lg w-1/3 p-6 transform transition-all duration-300 ${modalVisible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
+                        className={`flex flex-col gap-y-8 bg-white rounded-lg w-full lg:w-1/3 p-6 transform transition-all duration-300 ${modalVisible ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
                             }`}
                     >
                         <div className="py-2 flex justify-end mr-5">
