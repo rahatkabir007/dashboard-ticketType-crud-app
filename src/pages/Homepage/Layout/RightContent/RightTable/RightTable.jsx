@@ -9,7 +9,7 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
     const { ticketTypes } = useSelector(state => ({ ...state.ticketType }))
 
     const tableHeaders = [
-        "",
+        "Ticket No.",
         "Ticket Type",
         "Description",
         "Actions"
@@ -42,22 +42,22 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                     </thead>
                                     {/* -----------Plz Attention ,Table body/Row start here -------------- */}
                                     <tbody>
-                                        {ticketTypes?.map((tabledata, index) => (
+                                        {ticketTypes?.map((data, index) => (
                                             <tr key={index} className="even:bg-gray-50 odd:bg-white text-center">
                                                 <td className="px-3 py-5 text-sm">
                                                     <p className="text-gray-900 ">{index + 1}</p>
                                                 </td>
                                                 <td className="px-3 py-5 text-sm">
-                                                    <p className="text-gray-900 ">{tabledata?.ticketType}</p>
+                                                    <p className="text-gray-900 ">{data?.ticketType}</p>
                                                 </td>
                                                 <td className="px-3 py-3  text-sm capitalize">
                                                     <p className="text-gray-900 ">
-                                                        {tabledata?.description}
+                                                        {data?.description}
                                                     </p>
                                                 </td>
                                                 <td className="px-2 py-3  text-sm">
                                                     <button
-                                                        onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" handleClose={handleClose} tableData={tabledata} />)}
+                                                        onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" handleClose={handleClose} data={data} />)}
                                                     >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                             <span
@@ -70,10 +70,10 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                                         </span>
                                                     </button>
                                                     <button
-                                                        onClick={() => handleModalOpen(<DeleteTicketForm handleClose={handleClose} id={tabledata?.id} />)}
+                                                        onClick={() => handleModalOpen(<DeleteTicketForm handleClose={handleClose} id={data?.id} />)}
                                                     >
                                                         <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
-                                                            {tabledata && (
+                                                            {data && (
                                                                 <span
                                                                     style={{ boxShadow: "0 2px 6px #fd9b96" }}
                                                                     className="h-8 w-8  inset-0 bg-red-500   rounded  relative text-white flex justify-center items-center"
@@ -86,11 +86,6 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                                 </td>
                                             </tr>
                                         ))}
-                                        {/* <SharedOrderStatusUpdateModal
-                                        ordersData={ordersData}
-                                        showUpdateModal={props.showUpdateModal}
-                                        setShowUpdateModal={props.setShowUpdateModal}
-                                    ></SharedOrderStatusUpdateModal> */}
                                     </tbody>
                                 </table>
                                 {/* ---------- table footer  ------------------------------- */}
@@ -104,11 +99,6 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                         <Pagination pageCount={2} currentPage={1} />
                                     </div>
                                 </div>
-                                {/* <SharedDeleteModal
-                                deleteModalSlug={props.deleteModalSlug}
-                                handleDelete={props.handleDelete}
-                                setDeleteModalSlug={props.setDeleteModalSlug}
-                            ></SharedDeleteModal> */}
                             </div>
                         </div>
                     </>

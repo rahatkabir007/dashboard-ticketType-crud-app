@@ -14,7 +14,6 @@ const LocalStorage = {
 // Initial state
 const initialState = {
     ticketTypes: LocalStorage.getTicketTypes(),
-    showModal: false,
 };
 
 // Ticket types slice
@@ -29,7 +28,6 @@ const ticketTypesSlice = createSlice({
         },
         editTicketType: (state, action) => {
             const editedTicketType = action.payload;
-            console.log(action.payload);
             state.ticketTypes = state.ticketTypes.map((ticketType) => {
                 if (ticketType.id === editedTicketType.id) {
                     return editedTicketType;
@@ -44,9 +42,6 @@ const ticketTypesSlice = createSlice({
                 (ticketType) => ticketType.id !== deletedTicketId
             );
             LocalStorage.setTicketTypes(state.ticketTypes);
-        },
-        toggleModal: (state) => {
-            state.showModal = !state.showModal;
         },
     },
 });

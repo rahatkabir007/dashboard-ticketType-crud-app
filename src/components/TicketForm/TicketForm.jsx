@@ -3,7 +3,7 @@ import { addTicketType, editTicketType } from '../../features/TicketReducer';
 import { useDispatch } from 'react-redux';
 import { ToastMessage } from "../../utils/ToastMessage";
 
-const TicketForm = ({ submitbtn, handleClose, tableData }) => {
+const TicketForm = ({ submitbtn, handleClose, data }) => {
     const [values, setValues] = useState({
         ticketType: '',
         description: ''
@@ -12,27 +12,22 @@ const TicketForm = ({ submitbtn, handleClose, tableData }) => {
     const dispatch = useDispatch();
 
     const handleAdd = (e, submitbtn) => {
-
-        const data = {
-            id: Math.floor(Math.random() * 1000),
-            ticketType: values.ticketType,
-            description: values.description
-
-        }
         if (submitbtn === "Add Ticket") {
-            dispatch(addTicketType(data));
-            ToastMessage.notifySuccess("Post Added Successfully")
-        }
-        // if (submitbtn === "Edit Ticket") {
-        else {
-            dispatch(editTicketType({
-                id: tableData?.id,
+            dispatch(addTicketType({
+                id: Math.floor(Math.random() * 1000),
                 ticketType: values.ticketType,
                 description: values.description
             }));
+            ToastMessage.notifySuccess("Post Added Successfully")
+        }
+        else {
+            dispatch(editTicketType({
+                id: data?.id,
+                ticketType: values.ticketType ? values.ticketType : data?.ticketType,
+                description: values.description ? values.description : data?.description
+            }));
             ToastMessage.notifySuccess("Post Edited Successfully")
         }
-        // }
         handleClose();
         e.preventDefault();
     }
@@ -50,7 +45,7 @@ const TicketForm = ({ submitbtn, handleClose, tableData }) => {
                             id="ticketType"
                             type="text"
                             placeholder="Ticket Type"
-                            defaultValue={tableData ? tableData.ticketType : values.ticketType}
+                            defaultValue={data ? data.ticketType : values.ticketType}
                             onChange={(e) => setValues({ ...values, ticketType: e.target.value })}
                             required
                         />
@@ -65,7 +60,7 @@ const TicketForm = ({ submitbtn, handleClose, tableData }) => {
                             className="appearance-none bg-gray-200 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:border-gray-700"
                             id="description"
                             placeholder="Description"
-                            defaultValue={tableData ? tableData.description : values.description}
+                            defaultValue={data ? data.description : values.description}
                             onChange={(e) => setValues({ ...values, description: e.target.value })}
                             required
                         />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
+
 const Modal = ({ isOpen, handleClose, content }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
