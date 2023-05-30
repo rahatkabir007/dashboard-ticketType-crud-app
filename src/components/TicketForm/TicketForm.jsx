@@ -33,7 +33,7 @@ const TicketForm = ({ title, submitbtn, handleClose, data }) => {
                 ticketType: values.ticketType,
                 description: values.description
             }));
-            ToastMessage.notifySuccess("Post Added Successfully")
+            ToastMessage.notifySuccess("Ticket Type Added Successfully")
         }
         else {
             if (!values.ticketType) {
@@ -53,7 +53,7 @@ const TicketForm = ({ title, submitbtn, handleClose, data }) => {
                 ticketType: values.ticketType,
                 description: values.description
             }));
-            ToastMessage.notifySuccess("Post Edited Successfully")
+            ToastMessage.notifySuccess("Ticket Type Edited Successfully")
         }
         handleClose();
 

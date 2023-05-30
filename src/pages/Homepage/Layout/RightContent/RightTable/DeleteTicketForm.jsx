@@ -9,14 +9,14 @@ const DeleteTicketForm = ({ handleClose, id }) => {
     const handleDelete = () => {
         dispatch(deleteTicketType(id));
         handleClose();
-        ToastMessage.notifySuccess("Post Deleted Successfully")
+        ToastMessage.notifySuccess("Ticket Type Deleted Successfully")
     }
 
     return (
         <div>
             <div className="flex flex-col gap-y-10 items-center justify-center">
                 <div>
-                    <p className='text-xl'> Are You Sure You Want To Delete This Post?</p>
+                    <p className='text-xl'> Are You Sure You Want To Delete This Ticket Type?</p>
                 </div>
                 <div className='flex justify-center gap-8'>
                     <div
