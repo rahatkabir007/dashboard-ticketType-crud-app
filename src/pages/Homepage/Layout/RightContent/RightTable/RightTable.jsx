@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Pagination from "../../../../../components/Pagination/Pagination";
 import DeleteTicketForm from "./DeleteTicketForm";
@@ -7,13 +7,18 @@ import { useSelector } from 'react-redux';
 
 const RightTable = ({ handleModalOpen, handleClose }) => {
     const { ticketTypes } = useSelector(state => ({ ...state.ticketType }))
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dataPerPage] = useState(3);
     const tableHeaders = [
         "Ticket No.",
         "Ticket Type",
         "Description",
         "Actions"
     ]
+
+    const indexOfLastData = currentPage * dataPerPage;
+    const indexOfFirstData = indexOfLastData - dataPerPage;
+    const currentTableTypes = ticketTypes.slice(indexOfFirstData, indexOfLastData)
 
     return (
         <div className="py-5 rounded w-full">
@@ -42,7 +47,7 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                     </thead>
                                     {/* -----------Plz Attention ,Table body/Row start here -------------- */}
                                     <tbody>
-                                        {ticketTypes?.map((data, index) => (
+                                        {currentTableTypes?.map((data, index) => (
                                             <tr key={index} className="even:bg-gray-50 odd:bg-white text-center">
                                                 <td className="px-3 py-5 text-sm">
                                                     <p className="text-gray-900 ">{index + 1}</p>
@@ -92,11 +97,16 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                 <div className="px-5 py-5 border-t flex justify-between items-center">
                                     <div>
                                         <span className="text-xs xs:text-sm text-gray-900">
-                                            Showing 1 to 10 of 50 Entries
+                                            Showing 1 to {dataPerPage} of {ticketTypes?.length} Entries
                                         </span>
                                     </div>
                                     <div className="inline-flex  xs:mt-0">
-                                        <Pagination pageCount={2} currentPage={1} />
+                                        <Pagination
+                                            dataPerPage={dataPerPage}
+                                            totalDatas={ticketTypes?.length}
+                                            currentPage={currentPage}
+                                            setCurrentPage={setCurrentPage}
+                                        />
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const Pagination = ({ pageCount, currentPage }) => {
+const Pagination = ({ dataPerPage, totalDatas, currentPage, setCurrentPage }) => {
   const [showPagination, setShowPagination] = useState(false);
   const [arrayStart, setArrayStart] = useState(0);
   const [arrayEnd, setArrayEnd] = useState(2);
@@ -9,9 +9,10 @@ const Pagination = ({ pageCount, currentPage }) => {
   const [lPclick, setLPClicked] = useState(false)
   const [lPclickL, setLPClickedL] = useState(false)
   const [showPaginateNumberArray, setShowPaginateNumberArray] = useState([]);
+  const pageCount = Math.ceil(totalDatas / dataPerPage)
 
   const handlePageClick = (event) => {
-
+    setCurrentPage(event)
   };
 
   useEffect(() => {
@@ -59,7 +60,6 @@ const Pagination = ({ pageCount, currentPage }) => {
                 .map((data, ind) => {
                   return (
                     <>
-                      {/* {console.log('ind', currentPage, ind)} */}
                       <div
                         onClick={() => {
                           if (currentPage !== (data + 1)) {
@@ -73,7 +73,7 @@ const Pagination = ({ pageCount, currentPage }) => {
                           className={`w-[32px] flex border-[1px]  border-[#C0C0C0] justify-center items-center h-[32px] ${currentPage === data + 1 ?
                             "text-white rounded bg-pscdarkblue font-bold"
                             : 'hover:bg-[#C0C0C0] text-pscdarkblue rounded'} ${clicked === ind &&
-                            "text-[#525455] font-bold"
+                            "text-white font-bold"
                             }`
                           }
                         >
