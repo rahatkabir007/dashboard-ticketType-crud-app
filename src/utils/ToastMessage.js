@@ -22,4 +22,16 @@ export class ToastMessage {
         progress: undefined,
 
     });
+
+
+    static notifyInfo = (message) => toast.info(message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+
+    });
 }

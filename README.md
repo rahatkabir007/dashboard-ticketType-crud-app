@@ -4,6 +4,7 @@ Features:
 Add Ticket Type and Description with a stylish popup modal. Receive a success toast message after adding.
 Edit Ticket Type and Description with an elegant popup modal. Receive a success toast message after editing.
 Remove Ticket Type with a sophisticated delete option in the popup modal. Receive a success toast message after removing.
+Handle Required Functionality for Ticket Type Field in both Add Ticket and Edit Ticket.
 
 Bonus Feature:
 

@@ -49,7 +49,6 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                     <tbody>
                                         {currentTableTypes?.map((data, index) => {
                                             const uniqueIndex = (currentPage - 1) * dataPerPage + index + 1;
-                                            console.log("🚀 ~ file: RightTable.jsx:52 ~ {currentTableTypes?.map ~ uniqueIndex:", uniqueIndex, index, indexOfLastData, indexOfFirstData + 1, Math.min(indexOfLastData, ticketTypes.length))
                                             return (
                                                 <tr key={index} className="even:bg-gray-50 odd:bg-white text-center">
                                                     <td className="px-3 py-5 text-sm">
@@ -60,12 +59,12 @@ const RightTable = ({ handleModalOpen, handleClose }) => {
                                                     </td>
                                                     <td className="px-3 py-3  text-sm capitalize">
                                                         <p className="text-gray-900 ">
-                                                            {data?.description}
+                                                            {data?.description ? data?.description : "No Description Available"}
                                                         </p>
                                                     </td>
                                                     <td className="px-2 py-3  text-sm">
                                                         <button
-                                                            onClick={() => handleModalOpen(<TicketForm submitbtn="Edit Ticket" handleClose={handleClose} data={data} />)}
+                                                            onClick={() => handleModalOpen(<TicketForm title="Edit Ticket Type" submitbtn="Save Changes" handleClose={handleClose} data={data} />)}
                                                         >
                                                             <span className="relative inline-block px-1 py-1 font-semibold text-green-900 leading-tight">
                                                                 <span
